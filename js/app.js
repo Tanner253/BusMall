@@ -50,10 +50,6 @@ function loadRandomImg(){
     }
 }
 
-
-
-
-
 options.addEventListener('click', handleClick);
 
 function handleClick(event){
