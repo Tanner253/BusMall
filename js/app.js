@@ -1,6 +1,12 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-empty */
 'use strict';
+// +++++++++++++++++++++++++++++++++++++++++++++
+// if(localStorage){
+//   retrieveAllPics;
+// }else{
+//   localStorage.allPics;
+// }
 
 var allPics = [];
 // var section = document.getElementById('imgSection');
@@ -66,10 +72,6 @@ function loadRandomImg(){
   prevUsedNumbers = usedNumbers.slice(0);
 }
 
-
-
-
-
 options.addEventListener('click', handleClick);
 
 function handleClick(event){
@@ -85,6 +87,7 @@ function handleClick(event){
     updateChartArrays();
     createChart();
     //show results graph
+   
   }
   loadRandomImg();
 }
@@ -177,6 +180,16 @@ function createChart(){
     }
   });
 }
-// document.getElementById('options').addEventListener('click', function(event){
-// if(event.target.id !== 'options'){
-//   tallyVotes(event.target.id)
+
+// localStorage.allPics = JSON.stringify(allPics);
+// // var retrieveAllPics = JSON.parse(localStorage.allPics);
+// // // //might need not sure
+
+// for(var i = 0 ; i < retrieveAllPics.length; i++){
+//   new Product(retrieveAllPics[i].filepath, retrieveAllPics[i].name, retrieveAllPics[i].views, retrieveAllPics[i].clicks);
+// }
+//prob wrong spot +++++++++++++++++++++ create local storage
+
+var busDataStringify = JSON.stringify(allPics);
+var busMallData = localStorage.getItem('Data', allPics);
+var busDataParse = JSON.parse(busMallData);
