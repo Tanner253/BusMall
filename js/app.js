@@ -3,7 +3,7 @@
 'use strict';
 
 var allPics = [];
-var section = document.getElementById('imgSection');
+// var section = document.getElementById('imgSection');
 var options = document.getElementById('options');
 var picture1 = document.getElementById('image1');
 var picture2 = document.getElementById('image2');
@@ -18,10 +18,7 @@ function Product(name){
   this.name = name;
   this.views = 0;
   this.clicks = 0;
-
-
   allPics.push(this);
-
 }
 
 new Product('bag');
@@ -91,7 +88,6 @@ function handleClick(event){
   }
   loadRandomImg();
 }
-
 loadRandomImg();
 
 function updateChartArrays(){
@@ -101,8 +97,6 @@ function updateChartArrays(){
   }
 }
 
-
-
 function tallyVotes(thisPic){
   for(var i = 0 ; i < allPics.length ; i++){
     if(thisPic === allPics[i].clicks){
@@ -111,7 +105,6 @@ function tallyVotes(thisPic){
     }
   }
 }
-
 
 function createChart(){
 
@@ -169,19 +162,21 @@ function createChart(){
       }]
     },
     options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero:true
-          }
-        }]
+      responsive:false,
+      animation: {
+        duration: 30000,
+        easing: 'easeOutBounce'
       }
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero:true
+        }
+      }]
     }
   });
 }
-document.getElementById('options').addEventListener('click', function(event){
-  if(event.target.id !== 'options'){
-    tallyVotes(event.target.id);
-  }
-});
-
+// document.getElementById('options').addEventListener('click', function(event){
+// if(event.target.id !== 'options'){
+//   tallyVotes(event.target.id)
