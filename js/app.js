@@ -1,8 +1,9 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-empty */
 'use strict';
 
 var allPics = [];
-
+var section = document.getElementById('imgSection');
 var options = document.getElementById('options');
 var picture1 = document.getElementById('image1');
 var picture2 = document.getElementById('image2');
@@ -12,7 +13,7 @@ var ctx = document.getElementById('myChart');
 var votes = [];
 var titles = [];
 
-function Product(name, votes){
+function Product(name){
   this.filepath = `img/${name}.jpg`;
   this.name = name;
   this.views = 0;
@@ -75,8 +76,6 @@ function loadRandomImg(){
 options.addEventListener('click', handleClick);
 
 function handleClick(event){
-
-
   for(var i = 0 ; i < allPics.length ; i++){
     if(event.target.alt === allPics[i].name){
       console.log('was clicked', event.target.alt);
@@ -116,6 +115,7 @@ function tallyVotes(thisPic){
 
 function createChart(){
 
+  // eslint-disable-next-line no-unused-vars
   var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -129,7 +129,7 @@ function createChart(){
           'rgba(255, 206, 86, 0.2)',
           'rgba(75, 192, 192, 0.2)',
           'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',  
+          'rgba(255, 159, 64, 0.2)',
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
           'rgba(255, 206, 86, 0.2)',
@@ -141,7 +141,7 @@ function createChart(){
           'rgba(255, 206, 86, 0.2)',
           'rgba(75, 192, 192, 0.2)',
           'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)', 
+          'rgba(255, 159, 64, 0.2)',
           'rgba(255, 99, 132, 0.2)',
         ],
         borderColor: [
@@ -150,7 +150,7 @@ function createChart(){
           'rgba(255, 206, 86, 1)',
           'rgba(75, 192, 192, 1)',
           'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)', 
+          'rgba(255, 159, 64, 1)',
           'rgba(255,99,132,1)',
           'rgba(54, 162, 235, 1)',
           'rgba(255, 206, 86, 1)',
