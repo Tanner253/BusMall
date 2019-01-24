@@ -1,6 +1,9 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-empty */
 'use strict';
+// +++++++++++++++++++++++++++++++++++++++++++++
+
+
 
 var allPics = [];
 // var section = document.getElementById('imgSection');
@@ -12,6 +15,10 @@ var totalClicks = 0;
 var ctx = document.getElementById('myChart');
 var votes = [];
 var titles = [];
+var imgTags = [picture1, picture2, picture3];
+var prevUsedNumbers = [];
+
+var retrievedPics = JSON.parse(localStorage.getItem('allPics'));
 
 function Product(name){
   this.filepath = `img/${name}.jpg`;
@@ -42,11 +49,6 @@ new Product('usb-img');
 new Product('water-can');
 new Product('wine-glass');
 
-
-var imgTags = [picture1, picture2, picture3];
-
-var prevUsedNumbers = [];
-
 function loadRandomImg(){
   var usedNumbers = [];
   for(var i = 0 ; i < imgTags.length; i++){
@@ -66,13 +68,13 @@ function loadRandomImg(){
   prevUsedNumbers = usedNumbers.slice(0);
 }
 
-
-
-
-
 options.addEventListener('click', handleClick);
 
-function handleClick(event){
+
+loadRandomImg();
+
+function handleClick(event){ 
+  
   for(var i = 0 ; i < allPics.length ; i++){
     if(event.target.alt === allPics[i].name){
       console.log('was clicked', event.target.alt);
@@ -84,11 +86,13 @@ function handleClick(event){
     options.removeEventListener('click', handleClick);
     updateChartArrays();
     createChart();
-    //show results graph
+    //show results graph 
+    var localStoragePics = localStorage.Pics = JSON.stringify(allPics);
+    localStorage.Pics = localStoragePics;
   }
   loadRandomImg();
 }
-loadRandomImg();
+
 
 function updateChartArrays(){
   for(var i = 0; i < allPics.length; i++){
@@ -103,6 +107,18 @@ function tallyVotes(thisPic){
       allPics[i].clicks++;
       updateChartArrays();
     }
+  }
+}
+
+function getItemsFromLocal(){
+  if (retrievedPics === null){
+    itemObjectMaker();
+    loadRandomImg();
+    createChart();
+  } else {
+    allPics = retrievedPics;
+    loadRandomImg();
+    createChart();
   }
 }
 
@@ -177,6 +193,5 @@ function createChart(){
     }
   });
 }
-// document.getElementById('options').addEventListener('click', function(event){
-// if(event.target.id !== 'options'){
-//   tallyVotes(event.target.id)
+
+
