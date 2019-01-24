@@ -71,10 +71,10 @@ function loadRandomImg(){
 options.addEventListener('click', handleClick);
 
 
-loadRandomImg();
 
-function handleClick(event){ 
-  
+
+function handleClick(event){
+  loadRandomImg();
   for(var i = 0 ; i < allPics.length ; i++){
     if(event.target.alt === allPics[i].name){
       console.log('was clicked', event.target.alt);
@@ -86,11 +86,10 @@ function handleClick(event){
     options.removeEventListener('click', handleClick);
     updateChartArrays();
     createChart();
-    //show results graph 
+
     var localStoragePics = localStorage.Pics = JSON.stringify(allPics);
     localStorage.Pics = localStoragePics;
   }
-  loadRandomImg();
 }
 
 
@@ -109,7 +108,7 @@ function tallyVotes(thisPic){
     }
   }
 }
-
+//logic at beginning of script (goes first)
 function getItemsFromLocal(){
   if (retrievedPics === null){
     itemObjectMaker();
@@ -194,4 +193,4 @@ function createChart(){
   });
 }
 
-
+loadRandomImg();
