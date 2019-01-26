@@ -18,7 +18,7 @@ var titles = [];
 var imgTags = [picture1, picture2, picture3];
 var prevUsedNumbers = [];
 
-var retrievedPics = JSON.parse(localStorage.getItem('allPics'));
+var retrievedPics = JSON.parse(localStorage.getItem('Pics'));
 
 function Product(name){
   this.filepath = `img/${name}.jpg`;
@@ -151,6 +151,7 @@ function createChart(){
           'rgba(153, 102, 255, 0.2)',
           'rgba(255, 159, 64, 0.2)',
           'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)'
         ],
         borderColor: [
           'rgba(255,99,132,1)',
@@ -172,6 +173,7 @@ function createChart(){
           'rgba(153, 102, 255, 1)',
           'rgba(255, 159, 64, 1)',
           'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)'
         ],
         borderWidth: 1
       }]
